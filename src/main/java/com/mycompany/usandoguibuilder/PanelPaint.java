@@ -53,8 +53,7 @@ public class PanelPaint extends JPanel{
         }
         return false;
     }
-    
-    
+   
     
     @Override
     protected void paintComponent(Graphics g) {

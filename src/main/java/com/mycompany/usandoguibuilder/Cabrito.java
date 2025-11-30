@@ -34,16 +34,9 @@ public class Cabrito extends JPanel{
    
     //WIP
     //valor painel anterior
-    public void listaPainelAnterior(JPanel painelAnterior){
-        LinkedList<JPanel> linkedPainelAnterior = new LinkedList();
-        linkedPainelAnterior.add(painelAnterior);
-    }
-    //WIP
-    //valor do painel atual
-    public void painelAtual(JPanel painelAtual){
-        LinkedList<JPanel> nomePainelAtual = new LinkedList();
-        nomePainelAtual.add(painelAtual);
-        
+    LinkedList<JPanel> linkedMovimentosCabrito = new LinkedList();
+    public void listaMovimentosCabrito(JPanel painelAtualCabrito){    
+        linkedMovimentosCabrito.add(painelAtualCabrito);
     }
     
  

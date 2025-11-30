@@ -6,6 +6,7 @@ package com.mycompany.usandoguibuilder;
 
 import java.awt.Color;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 /**
  *
  * @author Matheus Cabral
@@ -52,6 +53,7 @@ public class TelaJogo extends javax.swing.JFrame {
         PainelJogo.setPreferredSize(new java.awt.Dimension(800, 600));
 
         PosicaoSuperiorEsquerda.setBackground(new java.awt.Color(100, 100, 100));
+        PosicaoSuperiorEsquerda.setName("posicao superior esquerda"); // NOI18N
         PosicaoSuperiorEsquerda.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 PosicaoSuperiorEsquerdaAncestorAdded(evt);
@@ -68,6 +70,7 @@ public class TelaJogo extends javax.swing.JFrame {
         });
 
         PosicaoSuperiorDireita.setBackground(new java.awt.Color(100, 100, 100));
+        PosicaoSuperiorDireita.setName("posicao superior direita"); // NOI18N
         PosicaoSuperiorDireita.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PosicaoSuperiorDireitaMouseClicked(evt);
@@ -75,6 +78,7 @@ public class TelaJogo extends javax.swing.JFrame {
         });
 
         PosicaoCentral.setBackground(new java.awt.Color(100, 100, 100));
+        PosicaoCentral.setName("centro do jogo"); // NOI18N
         PosicaoCentral.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PosicaoCentralMouseClicked(evt);
@@ -82,6 +86,7 @@ public class TelaJogo extends javax.swing.JFrame {
         });
 
         PosicaoSuperiorCentral.setBackground(new java.awt.Color(100, 100, 100));
+        PosicaoSuperiorCentral.setName("posicao superior central"); // NOI18N
         PosicaoSuperiorCentral.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PosicaoSuperiorCentralMouseClicked(evt);
@@ -89,6 +94,7 @@ public class TelaJogo extends javax.swing.JFrame {
         });
 
         PosicaoInferiorDireita.setBackground(new java.awt.Color(100, 100, 100));
+        PosicaoInferiorDireita.setName("posicao inferior direita"); // NOI18N
         PosicaoInferiorDireita.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PosicaoInferiorDireitaMouseClicked(evt);
@@ -97,6 +103,7 @@ public class TelaJogo extends javax.swing.JFrame {
         PosicaoInferiorDireita.setLayout(new java.awt.GridLayout(1, 0));
 
         PosicaoInferiorEsquerda.setBackground(new java.awt.Color(100, 100, 100));
+        PosicaoInferiorEsquerda.setName("posicao inferior esquerda"); // NOI18N
         PosicaoInferiorEsquerda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PosicaoInferiorEsquerdaMouseClicked(evt);
@@ -167,27 +174,70 @@ public class TelaJogo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /*  a lógica deste método é que no momento em que a cabrito é adicionada
+     *  ela será filha do Jpanel, então, ao usar o "getParent()", é possivel
+     *  descobrir o painel atual do cabrito
+     */
+    Cabrito novoCabrito;
+    Carcara novoCarcara;
+        
+    public JPanel posicaoAtualCabritoJogo(Cabrito cabra){
+        
+        if(cabra.getParent() == PosicaoInferiorEsquerda){
+            System.out.println("a cabra está na posição "+ PosicaoInferiorEsquerda.getName());
+            return PosicaoInferiorEsquerda;
+            
+        }else if(cabra.getParent() == PosicaoInferiorDireita){
+            System.out.println("a cabra está na posição "+ PosicaoInferiorDireita.getName());
+            return PosicaoInferiorDireita;
+            
+        }else if(cabra.getParent() == PosicaoCentral){
+            System.out.println("a cabra está na posição "+ PosicaoCentral.getName());
+            return PosicaoCentral;
+            
+        }else if (cabra.getParent() == PosicaoSuperiorEsquerda){
+            System.out.println("a cabra está na posição "+ PosicaoSuperiorEsquerda.getName());
+            return PosicaoSuperiorEsquerda; 
+            
+        }else if(cabra.getParent() == PosicaoSuperiorDireita){
+            System.out.println("a cabra está na posição "+ PosicaoSuperiorDireita.getName());
+            return PosicaoSuperiorDireita;
+            
+        }else if(cabra.getParent() == PosicaoSuperiorCentral){
+            System.out.println("a cabra está na posição "+ PosicaoSuperiorCentral.getName());
+            return PosicaoSuperiorCentral;
+            
+        }else{
+            return null;
+        }
+       
+    }
+    
+    
+    
     private void PosicaoCentralMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PosicaoCentralMouseClicked
        
        int eixoX = evt.getX();
         int eixoY = evt.getY();
         
-        Cabrito novoCabrito = new Cabrito();
-        Carcara novoCarcara = new Carcara();
+        novoCabrito = new Cabrito();
         //metodo para o cabrito
         if(PosicaoCentral.posicaoVazia(PosicaoCentral) && PosicaoCentral.clicouNoCirculo(eixoX, eixoY)){       
             PosicaoCentral.add(novoCabrito);
-            
+            //adicionar o JPanel na linked list
+            //dessa forma, basta usar o .size() para determinar
+            //a quantidade de jogadas
+            novoCabrito.listaMovimentosCabrito(posicaoAtualCabritoJogo(novoCabrito));
          
         }else if(!(PosicaoCentral.posicaoVazia(PosicaoCentral)) && PosicaoCentral.clicouNoCirculo(eixoX, eixoY)){
             System.out.println("carcaraaaaaa");
-            PosicaoCentral.remove(novoCabrito);
             
-            PosicaoCentral.add(novoCarcara);
+             PosicaoCentral.remove(novoCabrito);
+             PosicaoCentral.revalidate();
+             PosicaoCentral.repaint();
             
+             
         }
-            PosicaoCentral.revalidate();
-            PosicaoCentral.repaint();
          
     }//GEN-LAST:event_PosicaoCentralMouseClicked
     //click no botão inferior
@@ -198,8 +248,10 @@ public class TelaJogo extends javax.swing.JFrame {
         Cabrito novoCabrito = new Cabrito();
         
         if(PosicaoInferiorDireita.posicaoVazia(PosicaoInferiorDireita) && PosicaoInferiorDireita.clicouNoCirculo(eixoX, eixoY)){
-            
             PosicaoInferiorDireita.add(novoCabrito);
+            novoCabrito.listaMovimentosCabrito(posicaoAtualCabritoJogo(novoCabrito));
+            
+            
             PosicaoInferiorDireita.revalidate();
             PosicaoInferiorDireita.repaint();
         }
@@ -214,6 +266,9 @@ public class TelaJogo extends javax.swing.JFrame {
         
         if(PosicaoSuperiorCentral.posicaoVazia(PosicaoSuperiorCentral) && PosicaoSuperiorCentral.clicouNoCirculo(eixoX, eixoY)){
             PosicaoSuperiorCentral.add(novoCabrito);
+            novoCabrito.listaMovimentosCabrito(posicaoAtualCabritoJogo(novoCabrito));
+            
+            
             PosicaoSuperiorCentral.revalidate();
             PosicaoSuperiorCentral.repaint();
         }
@@ -226,10 +281,13 @@ public class TelaJogo extends javax.swing.JFrame {
         int eixoY = evt.getY();
 
         Cabrito novoCabrito = new Cabrito();
-
+        
+            
         if(PosicaoInferiorEsquerda.posicaoVazia(PosicaoInferiorEsquerda) && PosicaoInferiorEsquerda.clicouNoCirculo(eixoX, eixoY)){
-
             PosicaoInferiorEsquerda.add(novoCabrito);
+            novoCabrito.listaMovimentosCabrito(posicaoAtualCabritoJogo(novoCabrito));
+            
+            
             PosicaoInferiorEsquerda.revalidate();
             PosicaoInferiorEsquerda.repaint();
         }
@@ -244,6 +302,8 @@ public class TelaJogo extends javax.swing.JFrame {
         if(PosicaoSuperiorDireita.posicaoVazia(PosicaoSuperiorDireita) && PosicaoSuperiorDireita.clicouNoCirculo(eixoX, eixoY)){
 
             PosicaoSuperiorDireita.add(novoCabrito);
+            novoCabrito.listaMovimentosCabrito(posicaoAtualCabritoJogo(novoCabrito));
+            
             PosicaoSuperiorDireita.revalidate();
             PosicaoSuperiorDireita.repaint();
         }
@@ -258,6 +318,8 @@ public class TelaJogo extends javax.swing.JFrame {
         if(PosicaoSuperiorEsquerda.posicaoVazia(PosicaoSuperiorEsquerda) && PosicaoSuperiorEsquerda.clicouNoCirculo(eixoX, eixoY)){
 
             PosicaoSuperiorEsquerda.add(novoCabrito);
+            novoCabrito.listaMovimentosCabrito(posicaoAtualCabritoJogo(novoCabrito));
+            
             PosicaoSuperiorEsquerda.revalidate();
             PosicaoSuperiorEsquerda.repaint();
         }
