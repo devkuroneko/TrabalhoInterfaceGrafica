@@ -13,15 +13,15 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author gatopreto
+ * @author Matheus Cabral
  */
 public class Cabrito extends JPanel{
  
-    public Cabrito(){
     
+    public Cabrito(){
         //funciona somente com o PATH completo desde a raiz até a imagem
         //verificar pq não funciona com getClass e getResource
-        ImageIcon iconeCabrito = new ImageIcon("UsandoGuiBuilder/src/main/java/com/mycompany/usandoguibuilder/bode.png");
+        ImageIcon iconeCabrito = new ImageIcon("/home/gatopreto/NetBeansProjects/UsandoGuiBuilder/src/main/java/com/mycompany/usandoguibuilder/Img/bode.png");
         JLabel Cabrito = new JLabel(iconeCabrito);
         this.setPreferredSize(new Dimension(40,40));
         
@@ -38,7 +38,6 @@ public class Cabrito extends JPanel{
         LinkedList<JPanel> linkedPainelAnterior = new LinkedList();
         linkedPainelAnterior.add(painelAnterior);
     }
-    
     //WIP
     //valor do painel atual
     public void painelAtual(JPanel painelAtual){

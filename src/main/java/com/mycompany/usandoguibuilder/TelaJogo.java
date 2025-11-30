@@ -5,13 +5,10 @@
 package com.mycompany.usandoguibuilder;
 
 import java.awt.Color;
-import java.awt.Point;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 /**
  *
- * @author gatopreto
+ * @author Matheus Cabral
  */
 public class TelaJogo extends javax.swing.JFrame {
     
@@ -49,7 +46,6 @@ public class TelaJogo extends javax.swing.JFrame {
         PosicaoInferiorEsquerda = new com.mycompany.usandoguibuilder.PanelPaint();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(800, 600));
 
         PainelJogo.setBackground(new java.awt.Color(100, 100, 100));
@@ -177,13 +173,22 @@ public class TelaJogo extends javax.swing.JFrame {
         int eixoY = evt.getY();
         
         Cabrito novoCabrito = new Cabrito();
-        
-        if(PosicaoCentral.clicouNoCirculo(eixoX, eixoY)){
-            
+        Carcara novoCarcara = new Carcara();
+        //metodo para o cabrito
+        if(PosicaoCentral.posicaoVazia(PosicaoCentral) && PosicaoCentral.clicouNoCirculo(eixoX, eixoY)){       
             PosicaoCentral.add(novoCabrito);
+            
+         
+        }else if(!(PosicaoCentral.posicaoVazia(PosicaoCentral)) && PosicaoCentral.clicouNoCirculo(eixoX, eixoY)){
+            System.out.println("carcaraaaaaa");
+            PosicaoCentral.remove(novoCabrito);
+            
+            PosicaoCentral.add(novoCarcara);
+            
+        }
             PosicaoCentral.revalidate();
             PosicaoCentral.repaint();
-        } 
+         
     }//GEN-LAST:event_PosicaoCentralMouseClicked
     //click no botão inferior
     private void PosicaoInferiorDireitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PosicaoInferiorDireitaMouseClicked
@@ -192,7 +197,7 @@ public class TelaJogo extends javax.swing.JFrame {
         
         Cabrito novoCabrito = new Cabrito();
         
-        if(PosicaoInferiorDireita.clicouNoCirculo(eixoX, eixoY)){
+        if(PosicaoInferiorDireita.posicaoVazia(PosicaoInferiorDireita) && PosicaoInferiorDireita.clicouNoCirculo(eixoX, eixoY)){
             
             PosicaoInferiorDireita.add(novoCabrito);
             PosicaoInferiorDireita.revalidate();
@@ -207,7 +212,7 @@ public class TelaJogo extends javax.swing.JFrame {
         
         Cabrito novoCabrito = new Cabrito();
         
-        if(PosicaoSuperiorCentral.clicouNoCirculo(eixoX, eixoY)){
+        if(PosicaoSuperiorCentral.posicaoVazia(PosicaoSuperiorCentral) && PosicaoSuperiorCentral.clicouNoCirculo(eixoX, eixoY)){
             PosicaoSuperiorCentral.add(novoCabrito);
             PosicaoSuperiorCentral.revalidate();
             PosicaoSuperiorCentral.repaint();
@@ -222,7 +227,7 @@ public class TelaJogo extends javax.swing.JFrame {
 
         Cabrito novoCabrito = new Cabrito();
 
-        if(PosicaoInferiorEsquerda.clicouNoCirculo(eixoX, eixoY)){
+        if(PosicaoInferiorEsquerda.posicaoVazia(PosicaoInferiorEsquerda) && PosicaoInferiorEsquerda.clicouNoCirculo(eixoX, eixoY)){
 
             PosicaoInferiorEsquerda.add(novoCabrito);
             PosicaoInferiorEsquerda.revalidate();
@@ -236,7 +241,7 @@ public class TelaJogo extends javax.swing.JFrame {
 
         Cabrito novoCabrito = new Cabrito();
 
-        if(PosicaoSuperiorDireita.clicouNoCirculo(eixoX, eixoY)){
+        if(PosicaoSuperiorDireita.posicaoVazia(PosicaoSuperiorDireita) && PosicaoSuperiorDireita.clicouNoCirculo(eixoX, eixoY)){
 
             PosicaoSuperiorDireita.add(novoCabrito);
             PosicaoSuperiorDireita.revalidate();
@@ -250,7 +255,7 @@ public class TelaJogo extends javax.swing.JFrame {
 
         Cabrito novoCabrito = new Cabrito();
 
-        if(PosicaoSuperiorEsquerda.clicouNoCirculo(eixoX, eixoY)){
+        if(PosicaoSuperiorEsquerda.posicaoVazia(PosicaoSuperiorEsquerda) && PosicaoSuperiorEsquerda.clicouNoCirculo(eixoX, eixoY)){
 
             PosicaoSuperiorEsquerda.add(novoCabrito);
             PosicaoSuperiorEsquerda.revalidate();

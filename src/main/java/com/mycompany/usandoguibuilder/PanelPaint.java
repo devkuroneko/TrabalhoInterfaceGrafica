@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author gatopreto
+ * @author Matheus Cabral
  */
 
 public class PanelPaint extends JPanel{
@@ -46,14 +46,14 @@ public class PanelPaint extends JPanel{
 }
 
     //verifica se a região está vazia 
-    //sem cabrito ou carcará
-    public void posicaoVazia(){
-        if (this == null){
-            //faz nada
+    public boolean posicaoVazia(JPanel posicao){
+        //conta a quantidade de componentes do painel
+        if(posicao.getComponentCount() == 0){
+            return true;
         }
+        return false;
     }
-
-   
+    
     
     
     @Override

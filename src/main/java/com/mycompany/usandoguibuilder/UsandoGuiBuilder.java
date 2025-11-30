@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author gatopreto
+ * @author Matheus Cabral
  */
 public class UsandoGuiBuilder extends JFrame {
 
