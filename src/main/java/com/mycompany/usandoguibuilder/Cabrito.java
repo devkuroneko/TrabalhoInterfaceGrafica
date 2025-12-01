@@ -31,7 +31,6 @@ public class Cabrito extends JPanel{
         
         this.add(Cabrito);
     }    
-   
     //WIP
     //valor painel anterior
     LinkedList<JPanel> linkedMovimentosCabrito = new LinkedList();
@@ -39,7 +38,14 @@ public class Cabrito extends JPanel{
         linkedMovimentosCabrito.add(painelAtualCabrito);
     }
     
+    LinkedList<JPanel> listaMovimentosAnteriores = new LinkedList();
+    public void listaMovimentosAnteriores(JPanel movimentoAnterior){
+        listaMovimentosAnteriores.add(movimentoAnterior);
+    }   
  
+    
+    
+    
     //posições válidas no jogo
     //ex.:
     //nome dos paineis
