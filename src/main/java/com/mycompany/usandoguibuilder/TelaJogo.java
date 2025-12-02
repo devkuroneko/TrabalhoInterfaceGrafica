@@ -33,7 +33,6 @@ public class TelaJogo extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
-    // --- ESTE É O MÉTODO QUE FALTAVA ---
     private void configurarMenu() {
         JMenuBar barraMenu = new JMenuBar();
 
@@ -262,8 +261,6 @@ public class TelaJogo extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> new TelaJogo().setVisible(true));
     }
 
-    // --- AQUI ESTÃO AS VARIÁVEIS QUE FALTAVAM ---
-    // (Isso corrige o erro do PainelJogo e Posicao... ficarem vermelhos)
     private javax.swing.JPanel PainelJogo;
     private com.mycompany.usandoguibuilder.PanelPaint PosicaoCentral;
     private com.mycompany.usandoguibuilder.PanelPaint PosicaoInferiorDireita;
