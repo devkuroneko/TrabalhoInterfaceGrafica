@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.usandoguibuilder;
 
 import java.awt.Color;
@@ -20,7 +17,7 @@ public class PanelPaint extends JPanel{
     
     
     //cor inicial do circulo
-    private Color corCirculo = Color.BLACK;
+    private Color corCirculo = Color.LIGHT_GRAY;
     
     //setter para modificar a cor 
     public void setCorCirculo(Color novaCor){

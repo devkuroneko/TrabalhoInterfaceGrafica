@@ -1,31 +1,47 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.usandoguibuilder;
 
-import java.awt.Color;
+import java.awt.Dimension;
+import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Matheus Cabral
- */
 public class Carcara extends JPanel {
-    
-    
-    public Carcara(){
-        ImageIcon iconCarcara = new ImageIcon("/home/gatopreto/NetBeansProjects/UsandoGuiBuilder/src/main/java/com/mycompany/usandoguibuilder/Img/eagle.png");
-        JLabel carcara = new JLabel(iconCarcara);
-        
-        
-        
+
+    public Carcara() {
+        this.setPreferredSize(new Dimension(40, 40));
         this.setOpaque(false);
-        this.setBackground(new Color(100,100,100));
-        
-        this.add(carcara);
+
+        String nomeArquivo = "eagle.png";
+
+        // Possíveis locais onde a imagem pode estar
+        String[] caminhosPossiveis = {
+                "src/main/resources/Img/" + nomeArquivo,
+                "TrabalhoInterfaceGrafica/src/main/resources/Img/" + nomeArquivo,
+                "resources/Img/" + nomeArquivo
+        };
+
+        ImageIcon icone = null;
+
+        for (String caminho : caminhosPossiveis) {
+            File arquivo = new File(caminho);
+            if (arquivo.exists()) {
+                icone = new ImageIcon(caminho);
+                break;
+            }
+        }
+
+        if (icone == null) {
+            java.net.URL url = getClass().getResource("/Img/" + nomeArquivo);
+            if (url != null) icone = new ImageIcon(url);
+        }
+
+        if (icone != null) {
+            this.add(new JLabel(icone));
+        } else {
+            JLabel erro = new JLabel("CARCARÁ?");
+            erro.setForeground(java.awt.Color.RED);
+            this.add(erro);
+        }
     }
-    
 }
