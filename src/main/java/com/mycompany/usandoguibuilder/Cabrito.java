@@ -15,12 +15,11 @@ public class Cabrito extends JPanel {
         // Nome do arquivo exato (Maiúscula importa!)
         String nomeArquivo = "bode.png";
 
-        // --- ESTRATÉGIA FORÇA BRUTA (Tenta vários caminhos) ---
         String[] caminhosPossiveis = {
-                "src/main/resources/Img/" + nomeArquivo,                        // Caminho Padrão Maven
-                "TrabalhoInterfaceGrafica/src/main/resources/Img/" + nomeArquivo, // Se a raiz for a pasta POO2
-                "resources/Img/" + nomeArquivo,                                   // Caminho direto
-                "src/Img/" + nomeArquivo                                          // Caminho antigo
+                "src/main/resources/Img/" + nomeArquivo,
+                "TrabalhoInterfaceGrafica/src/main/resources/Img/" + nomeArquivo,
+                "resources/Img/" + nomeArquivo,
+                "src/Img/" + nomeArquivo
         };
 
         ImageIcon icone = null;
@@ -32,7 +31,7 @@ public class Cabrito extends JPanel {
             if (arquivo.exists()) {
                 icone = new ImageIcon(caminho);
                 caminhoEncontrado = arquivo.getAbsolutePath();
-                break; // Achou! Para de procurar.
+                break;
             }
         }
 
@@ -45,13 +44,11 @@ public class Cabrito extends JPanel {
             }
         }
 
-        // --- RESULTADO ---
         if (icone != null) {
-            // Sucesso
+
             this.add(new JLabel(icone));
             System.out.println("[SUCESSO] Bode carregado de: " + caminhoEncontrado);
         } else {
-            // Fracasso Total - Mostra onde ele procurou
             JLabel erro = new JLabel("BODE?");
             erro.setForeground(java.awt.Color.RED);
             this.add(erro);
