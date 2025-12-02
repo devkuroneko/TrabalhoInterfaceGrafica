@@ -22,8 +22,6 @@ public class TelaJogo extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // AQUI ESTAVA O ERRO: Você chamava isto, mas o método não existia lá embaixo.
-        // Agora ele existe (veja linha 45).
         configurarMenu();
 
         // Inicia o Jogo
